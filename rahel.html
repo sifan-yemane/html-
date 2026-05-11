@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Dr. Rahel Ermias | Neurologist & Brain Health Specialist</title>
+  <!-- Google Fonts + Font Awesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f9fafc;
+      color: #1a2c3e;
+      scroll-behavior: smooth;
+      line-height: 1.5;
+    }
+
+    /* custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #e2e8f0;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #2c6e9e;
+      border-radius: 10px;
+    }
+
+    /* modern glass header */
+    .glass-header {
+      background: rgba(10, 35, 55, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.15);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      padding: 0 5%;
+      transition: all 0.2s;
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      padding: 1rem 0;
+    }
+
+    .logo-area h2 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      letter-spacing: -0.3px;
+      background: linear-gradient(135deg, #ffffff, #b9e2ff);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+    .logo-area p {
+      font-size: 0.75rem;
+      color: #a0c4e8;
+      margin-top: 4px;
+    }
+
+    nav {
+      display: flex;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+    }
+    nav a {
+      color: #eef4ff;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 0.5rem 1rem;
+      border-radius: 40px;
+      transition: all 0.25s ease;
+      font-size: 0.95rem;
+      cursor: pointer;
+      background: transparent;
+      letter-spacing: -0.2px;
+    }
+    nav a:hover {
+      background: rgba(255,255,255,0.15);
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    /* sections */
+    section {
+      display: none;
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+    section.active {
+      display: block;
+      animation: fadeSlideUp 0.55s forwards;
+    }
+    @keyframes fadeSlideUp {
+      0% { opacity: 0; transform: translateY(20px);}
+      100% { opacity: 1; transform: translateY(0);}
+    }
+
+    /* container spacing */
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 2.5rem 2rem;
+    }
+
+    /* hero modern */
+    .hero-modern {
+      background: linear-gradient(105deg, #0e2f48 0%, #1b4e72 100%);
+      border-radius: 2rem;
+      padding: 3rem 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      margin-bottom: 3rem;
+      box-shadow: 0 20px 35px -12px rgba(0,0,0,0.2);
+    }
+    .hero-text {
+      flex: 2;
+      color: white;
+    }
+    .hero-text h1 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+      background: linear-gradient(to right, #fff, #c3e2ff);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+    .hero-text p {
+      font-size: 1.2rem;
+      opacity: 0.9;
+      margin-bottom: 1.8rem;
+    }
+    .hero-badge {
+      background: rgba(255,255,255,0.2);
+      backdrop-filter: blur(4px);
+      display: inline-block;
+      padding: 0.5rem 1.2rem;
+      border-radius: 60px;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+    .hero-avatar {
+      flex: 1;
+      text-align: center;
+    }
+    .hero-avatar img {
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 4px solid white;
+      box-shadow: 0 20px 30px -8px rgba(0,0,0,0.3);
+      background: #fff;
+    }
+
+    /* card modern grid */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.8rem;
+      margin: 2rem 0;
+    }
+    .neu-card {
+      background: white;
+      border-radius: 1.5rem;
+      padding: 1.6rem;
+      transition: all 0.25s ease;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.02), 0 2px 6px rgba(0,0,0,0.05);
+      border: 1px solid #edf2f7;
+    }
+    .neu-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 30px -12px rgba(0, 32, 64, 0.12);
+      border-color: #cbdff2;
+    }
+    .neu-card i {
+      font-size: 2.5rem;
+      color: #1f6392;
+      margin-bottom: 1rem;
+    }
+    .neu-card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+    .neu-card p {
+      color: #3a546d;
+      line-height: 1.4;
+    }
+
+    /* about + profile section */
+    .profile-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2.5rem;
+      background: white;
+      border-radius: 2rem;
+      padding: 2rem;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.03);
+      border: 1px solid #e9eff5;
+      margin-bottom: 2rem;
+    }
+    .profile-img {
+      flex: 1;
+      text-align: center;
+    }
+    .profile-img img {
+      width: 220px;
+      height: 220px;
+      border-radius: 2rem;
+      object-fit: cover;
+      box-shadow: 0 15px 25px -8px rgba(0,0,0,0.2);
+      border: 3px solid white;
+    }
+    .profile-info {
+      flex: 2;
+    }
+    .profile-info h2 {
+      font-size: 2rem;
+      color: #0e2f48;
+      margin-bottom: 0.5rem;
+    }
+    .tag {
+      background: #e6f2fa;
+      color: #1f6392;
+      display: inline-block;
+      padding: 0.2rem 1rem;
+      border-radius: 30px;
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
+    .info-list {
+      list-style: none;
+      margin: 1.2rem 0;
+    }
+    .info-list li {
+      margin: 0.6rem 0;
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+    }
+    .info-list i {
+      width: 1.6rem;
+      color: #2c6e9e;
+    }
+
+    /* research cards */
+    .research-card {
+      background: white;
+      border-radius: 1.5rem;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: 0.2s;
+      box-shadow: 0 10px 20px -5px rgba(0,0,0,0.05);
+    }
+    .research-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      transition: transform 0.4s;
+    }
+    .research-card:hover img {
+      transform: scale(1.02);
+    }
+    .research-content {
+      padding: 1.5rem;
+    }
+    .research-content h3 {
+      margin-bottom: 0.5rem;
+    }
+
+    /* form styling */
+    .form-card {
+      background: white;
+      border-radius: 2rem;
+      padding: 2rem;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .input-group {
+      margin-bottom: 1.2rem;
+    }
+    .input-group label {
+      font-weight: 500;
+      display: block;
+      margin-bottom: 0.4rem;
+      color: #1e3a5f;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 0.9rem 1.2rem;
+      border-radius: 1rem;
+      border: 1px solid #dce5ef;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      transition: all 0.2s;
+      background: #fefefe;
+    }
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: #2c6e9e;
+      box-shadow: 0 0 0 3px rgba(44,110,158,0.15);
+    }
+    .btn-primary {
+      background: linear-gradient(95deg, #0e2f48, #1c577c);
+      border: none;
+      padding: 0.9rem;
+      border-radius: 3rem;
+      font-weight: 600;
+      font-size: 1rem;
+      letter-spacing: 0.3px;
+      transition: all 0.2s;
+      cursor: pointer;
+      color: white;
+      width: 100%;
+    }
+    .btn-primary:hover {
+      background: linear-gradient(95deg, #164a6b, #0f3857);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 18px rgba(0,0,0,0.1);
+    }
+    hr {
+      margin: 2rem 0;
+      border-color: #e2edf7;
+    }
+    .footer-note {
+      text-align: center;
+      margin-top: 2rem;
+      padding: 1.5rem;
+      color: #4a627a;
+      border-top: 1px solid #e0ecf5;
+    }
+    i.icon-spacer {
+      margin-right: 8px;
+    }
+    @media (max-width: 750px) {
+      .hero-text h1 { font-size: 2rem; }
+      .container { padding: 1.5rem; }
+      nav a { padding: 0.4rem 0.8rem; font-size: 0.85rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="glass-header">
+  <div class="nav-container">
+    <div class="logo-area">
+      <h2><i class="fas fa-brain"></i> Dr. Rahel Ermias</h2>
+      <p>Neurology & Cognitive Neuroscience</p>
+    </div>
+    <nav>
+      <a onclick="showPage('home')"><i class="fas fa-home"></i> Home</a>
+      <a onclick="showPage('about')"><i class="fas fa-user-md"></i> About</a>
+      <a onclick="showPage('services')"><i class="fas fa-stethoscope"></i> Specialization</a>
+      <a onclick="showPage('research')"><i class="fas fa-flask"></i> Research</a>
+      <a onclick="showPage('contact')"><i class="fas fa-envelope"></i> Contact</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HOME SECTION -->
+<section id="home" class="active">
+  <div class="container">
+    <div class="hero-modern">
+      <div class="hero-text">
+        <span class="hero-badge"><i class="fas fa-certificate"></i> Board Certified Neurologist</span>
+        <h1>Leading Neurology Care <br> & Brain Research</h1>
+        <p>Advanced diagnosis, compassionate treatment, and innovative neuro-rehabilitation — Dr. Rahel Ermias delivers excellence in brain health and neurological disorders.</p>
+        <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+          <button class="btn-primary" style="width: auto; padding: 0.7rem 1.8rem;" onclick="showPage('contact')"><i class="fas fa-calendar-check"></i> Request Appointment</button>
+          <button class="btn-primary" style="width: auto; background: rgba(255,255,255,0.2); backdrop-filter: blur(8px);" onclick="showPage('services')">Explore Services</button>
+        </div>
+      </div>
+      <div class="hero-avatar">
+        <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=400&h=400&fit=crop" alt="Dr. Rahel Ermias">
+      </div>
+    </div>
+
+    <div class="card-grid">
+      <div class="neu-card">
+        <i class="fas fa-hospital-user"></i>
+        <h3>🏥 Clinical Excellence</h3>
+        <p>Evidence-based neurology, precise diagnostics, and compassionate patient pathways for complex conditions.</p>
+      </div>
+      <div class="neu-card">
+        <i class="fas fa-brain"></i>
+        <h3>🧠 Brain Health Focus</h3>
+        <p>Personalized memory care, headache management, and cognitive resilience programs.</p>
+      </div>
+      <div class="neu-card">
+        <i class="fas fa-microscope"></i>
+        <h3>🔬 Research Driven</h3>
+        <p>Contributing to breakthrough neuroscience, clinical trials, and neuroplasticity advancements.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT SECTION (enhanced) -->
+<section id="about">
+  <div class="container">
+    <div class="profile-wrapper">
+      <div class="profile-img">
+        <img src="https://images.unsplash.com/photo-1581056771107-24ca5f033842?w=400&h=400&fit=crop" alt="Dr. Rahel Ermias portrait">
+      </div>
+      <div class="profile-info">
+        <h2>Dr. Rahel Ermias, MD</h2>
+        <div class="tag"><i class="fas fa-stethoscope"></i> Consultant Neurologist</div>
+        <p>Dedicated to transforming neurological care through empathy, innovation, and clinical excellence. Dr. Rahel Ermias has completed advanced fellowship training in cognitive and behavioral neurology, treating thousands of patients with epilepsy, stroke, and movement disorders.</p>
+        <ul class="info-list">
+          <li><i class="fas fa-graduation-cap"></i> <strong>Education:</strong> MD with specialization in Neurology – Addis Ababa University & Harvard-affiliated training</li>
+          <li><i class="fas fa-trophy"></i> <strong>Experience:</strong> 12+ years clinical & hospital leadership | Neuro-rehabilitation unit director</li>
+          <li><i class="fas fa-heartbeat"></i> <strong>Interests:</strong> Brain mapping, neuroimmunology, mental health integration, AI in neurology</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card-grid">
+      <div class="neu-card">
+        <i class="fas fa-university"></i>
+        <h3>🎓 Education & Honors</h3>
+        <p>Neurology residency (Mayo Clinic affiliated), Master of Science in Clinical Neurosciences. Multiple research awards.</p>
+      </div>
+      <div class="neu-card">
+        <i class="fas fa-chart-line"></i>
+        <h3>🏆 Professional leadership</h3>
+        <p>Member of American Academy of Neurology, advisory board for brain health initiatives in East Africa.</p>
+      </div>
+      <div class="neu-card">
+        <i class="fas fa-hand-holding-heart"></i>
+        <h3>💡 Patient Philosophy</h3>
+        <p>Holistic, individualized care — bridging cutting-edge science with empathy and cultural understanding.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES / Specialization -->
+<section id="services">
+  <div class="container">
+    <h2 style="font-size: 2rem; margin-bottom: 0.5rem;"><i class="fas fa-microscope"></i> Specialized Neurology Care</h2>
+    <p style="margin-bottom: 2rem; color: #2c577d;">Comprehensive diagnosis and treatment for disorders of the central and peripheral nervous system.</p>
+    <div class="card-grid">
+      <div class="neu-card">
+        <i class="fas fa-brain"></i>
+        <h3>🧠 Stroke & Cerebrovascular</h3>
+        <p>Acute stroke management, preventive therapy, and advanced rehabilitation for improved outcomes.</p>
+      </div>
+      <div class="neu-card">
+        <i class="fas fa-bolt"></i>
+        <h3>⚡ Epilepsy Care</h3>
+        <p>State-of-the-art EEG monitoring, anti-seizure medications, and lifestyle guidance for seizure freedom.</p>
+      </div>
+      <div class="neu-card">
+        <i class="fas fa-memory"></i>
+        <h3>🧩 Memory & Cognitive Disorders</h3>
+        <p>Alzheimer’s disease, dementia, mild cognitive impairment – early detection and disease-modifying strategies.</p>
+      </div>
+      <div class="neu-card">
+        <i class="fas fa-hand-peace"></i>
+        <h3>💢 Nerve & Muscle Disorders</h3>
+        <p>Peripheral neuropathy, myasthenia gravis, and chronic pain management with multidisciplinary approach.</p>
+      </div>
+      <div class="neu-card">
+        <i class="fas fa-head-side-medical"></i>
+        <h3>🤕 Headache & Migraine</h3>
+        <p>Personalized plans for migraine prevention, tension headaches, and cluster headaches relief.</p>
+      </div>
+      <div class="neu-card">
+        <i class="fas fa-walking"></i>
+        <h3>🔄 Movement Disorders</h3>
+        <p>Parkinson’s disease, essential tremor, and dystonia – advanced therapies including DTR evaluation.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESEARCH SECTION - visually upgraded -->
+<section id="research">
+  <div class="container">
+    <h2 style="font-size: 2rem;"><i class="fas fa-flask"></i> Research & Publications</h2>
+    <p style="margin-bottom: 2rem;">Dr. Rahel Ermias actively contributes to global neuroscience research, advancing stroke recovery, neural mapping, and neurorehabilitation.</p>
+    <div class="card-grid">
+      <div class="research-card">
+        <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=600&h=400&fit=crop" alt="Brain activity research">
+        <div class="research-content">
+          <h3>🧠 Brain Activity Mapping Study</h3>
+          <p>Published in <em>Journal of Neural Engineering</em> — novel insights into memory retention using high-density EEG and AI modeling.</p>
+          <span style="font-size: 0.8rem; color:#2c6e9e;"><i class="fas fa-quote-left"></i> Key contribution to cognitive biomarkers</span>
+        </div>
+      </div>
+      <div class="research-card">
+        <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=600&h=400&fit=crop" alt="Stroke rehabilitation">
+        <div class="research-content">
+          <h3>🔄 Stroke Recovery Innovations</h3>
+          <p>Co-authored "Telerehabilitation in Post-Stroke Motor Recovery" — pioneering digital platforms for rural communities, reducing disability gaps.</p>
+        </div>
+      </div>
+      <div class="research-card">
+        <img src="https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?w=600&h=400&fit=crop" alt="Neurology conference">
+        <div class="research-content">
+          <h3>🌍 Global Neurology Access</h3>
+          <p>Research on disparities in epilepsy care and implementation science. Speaker at World Neurology Congress 2024.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT SECTION - elevated friendly form + info -->
+<section id="contact">
+  <div class="container">
+    <div style="text-align: center; margin-bottom: 2rem;">
+      <h2><i class="fas fa-phone-alt"></i> Connect with Dr. Rahel Ermias</h2>
+      <p>For consultations, second opinions, or research collaborations — reach out today.</p>
+    </div>
+    <div class="form-card">
+      <form id="consultForm" onsubmit="return handleFormSubmit(event)">
+        <div class="input-group">
+          <label><i class="fas fa-user"></i> Full name</label>
+          <input type="text" id="fullName" placeholder="e.g., Selam Tesfaye" required>
+        </div>
+        <div class="input-group">
+          <label><i class="fas fa-envelope"></i> Email address</label>
+          <input type="email" id="emailAddr" placeholder="hello@example.com" required>
+        </div>
+        <div class="input-group">
+          <label><i class="fas fa-comment-dots"></i> Your message / inquiry</label>
+          <textarea id="msgContent" rows="4" placeholder="Describe your neurological concern or appointment request..." required></textarea>
+        </div>
+        <button type="submit" class="btn-primary"><i class="fas fa-paper-plane"></i> Send consultation request</button>
+        <p style="font-size: 0.75rem; margin-top: 1rem; text-align: center; color:#5b7c9a;"><i class="fas fa-lock"></i> Your data is confidential. We’ll respond within 24-48 hours.</p>
+      </form>
+    </div>
+    <div style="display: flex; justify-content: center; gap: 2rem; margin-top: 2rem; flex-wrap: wrap;">
+      <div><i class="fas fa-map-marker-alt" style="color:#1f6392;"></i> Neuroscience Clinic, Addis Ababa</div>
+      <div><i class="fas fa-phone"></i> +251-911-234567</div>
+      <div><i class="fas fa-clock"></i> Mon-Fri: 9am – 5pm</div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer-note">
+  <p><i class="fas fa-brain"></i> Dr. Rahel Ermias — Advancing Neurology, Empowering Lives  |  © 2026  |  <i class="fas fa-heart" style="color:#b22234;"></i> Evidence-based care</p>
+</footer>
+
+<script>
+  // smooth page transition for modern navigation
+  function showPage(pageId) {
+    // hide all sections
+    const sections = document.querySelectorAll('section');
+    sections.forEach(sec => {
+      sec.classList.remove('active');
+    });
+    const activeSection = document.getElementById(pageId);
+    if (activeSection) {
+      activeSection.classList.add('active');
+    }
+    // Optional: scroll to top smoothly
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    // update url hash (optional but user-friendly)
+    history.pushState(null, null, `#${pageId}`);
+  }
+
+  // handleURL hash on load
+  function handleHashChange() {
+    const hash = window.location.hash.substring(1);
+    const validPages = ['home', 'about', 'services', 'research', 'contact'];
+    if (hash && validPages.includes(hash)) {
+      showPage(hash);
+    } else {
+      showPage('home');
+    }
+  }
+
+  // enhanced form validation + subtle animation feedback
+  function handleFormSubmit(event) {
+    event.preventDefault();
+    const name = document.getElementById('fullName').value.trim();
+    const email = document.getElementById('emailAddr').value.trim();
+    const message = document.getElementById('msgContent').value.trim();
+
+    if (!name || !email || !message) {
+      alert("❌ Please fill out all fields before sending.");
+      return false;
+    }
+    const emailPattern = /^[^\s@]+@([^\s@.,]+\.)+[^\s@.,]{2,}$/;
+    if (!emailPattern.test(email)) {
+      alert("📧 Please enter a valid email address.");
+      return false;
+    }
+
+    // success simulation with modern feel
+    const btn = document.querySelector('#consultForm .btn-primary');
+    const originalText = btn.innerHTML;
+    btn.innerHTML = '<i class="fas fa-spinner fa-pulse"></i> Sending...';
+    btn.disabled = true;
+
+    setTimeout(() => {
+      alert(`✨ Thank you ${name}, your message has been received. Dr. Rahel’s team will reach out shortly.`);
+      document.getElementById('consultForm').reset();
+      btn.innerHTML = originalText;
+      btn.disabled = false;
+    }, 800);
+    return false;
+  }
+
+  // Also allow initial active section from hash or default
+  window.addEventListener('load', () => {
+    handleHashChange();
+  });
+  window.addEventListener('hashchange', handleHashChange);
+</script>
+</body>
+</html>
